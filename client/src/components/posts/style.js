@@ -10,7 +10,7 @@ const StyleAppBar=styled(AppBar)({
     justifyContent: 'center',
     alignItems: 'center',
 })
-const StyleImage=styled('image')({
+const StyleImage=styled('img')({
     marginLeft:'15px'
 })
 export {StyleAppBar,StyleImage}
