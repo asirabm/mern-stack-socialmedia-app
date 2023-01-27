@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {Typography,Container, AppBar, Toolbar, Grid, Grow} from '@mui/material'
 import Posts from './components/posts/posts'
-import Form from './components/form/Form'
+import FormPost from './components/form/Form'
 import memories from './images/memories.png'
 import { StyleAppBar,StyleImage } from './components/posts/style'
 //import Testing from './components/Testing'
@@ -41,7 +41,7 @@ function App(){
                     <Posts/>
                  </Grid>
                  <Grid item xs={12} sm={5}>
-                    <Form/>
+                    <FormPost/>
                  </Grid>
              </Grid>
 

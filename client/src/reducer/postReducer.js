@@ -1,9 +1,9 @@
-const initialState=[]
 
-export const postReducer=(state=initialState,action)=>{
+
+export const postReducer=(posts=[],action)=>{
     switch(action.type){
         case 'fetch_post':return action.payload
-        case 'create_post':return state
-        default: return state
+        case 'create_post':return [...posts,action.payload]
+        default: return posts
     }
 }

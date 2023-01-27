@@ -9,7 +9,7 @@ export const StylePaper=styled(Paper)((theme)=>(
     }
 ))
 
-export const StyleForm=styled('Form')({
+export const StyleForm=styled('form')({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'

@@ -10,5 +10,5 @@ export const getPost=async (req,res)=>{
   }
 }
 export const postPost=(req,res)=>{
-    res.send('post Posts')
+    console.log(req.body)
 }

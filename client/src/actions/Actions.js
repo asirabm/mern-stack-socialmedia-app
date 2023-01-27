@@ -33,4 +33,16 @@ export const getAllPosts=()=>async(dispatch)=>{
     }
 }
 
+export const postPost=(post)=>async(dispatch)=>{
+    try{
+     const {data}= await api.postData(post)
+     dispatch({
+        type:'create_post',
+        payload:data
+     })
+    }
+    catch(e){
+      console.log(e.message)
+    }
+}
 

@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { TextField,Button,Typography, Paper } from '@mui/material'
 import FileBase from 'react-file-base64'
 import { StylePaper,StyleForm,StyleFileInput } from './style'
+import {useDispatch} from 'react-redux'
+import { postPost } from '../../actions/Actions'
 
-function Form() {
+function FormPost() {
+  const dispatch=useDispatch()
   const[postData,setPostData]=useState({
     creator:'',
     title:'',
@@ -11,8 +14,11 @@ function Form() {
     tags:'',
     SelectedFile:''
   })
+
 const formhandle=(e)=>{
   e.preventDefault()
+ dispatch(postPost(postData))
+ 
 }
 const clear=()=>{
 
@@ -75,4 +81,4 @@ const clear=()=>{
   )
 }
 
-export default Form
+export default FormPost
