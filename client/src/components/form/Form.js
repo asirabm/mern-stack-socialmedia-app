@@ -12,7 +12,7 @@ function FormPost() {
     title:'',
     message:'',
     tags:'',
-    SelectedFile:''
+    selectedFile:''
   })
 
 const formhandle=(e)=>{
@@ -70,7 +70,7 @@ const clear=()=>{
         fullWidth/>
 
          <StyleFileInput>
-        <FileBase type='file' multiple={false} onDone={({base64})=>setPostData({...postData,SelectedFile:base64})}/>
+        <FileBase type='file' multiple={false} onDone={({base64})=>setPostData({...postData,selectedFile:base64})}/>
         </StyleFileInput> 
         <Button sx={{marginBottom: 2}} variant='contained' fullWidth size='large' color='primary' type='submit'>Submit</Button>
         <Button  variant='contained' fullWidth size='small' color='error' onClick={clear}>Clear</Button>
