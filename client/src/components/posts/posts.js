@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@mui/material'
 //import Post from './post/post.js'
 
-function Posts() {
+function Posts({setCurrentId,currentId}) {
   const posts=useSelector(state=>state.postReducer)
-  console.log(posts)
   return (
     <>
       <Grid container alignItems={'stretch'} spacing={2}>
           {
             posts.map(post=>
-              <Grid key={post._id} xs={12} sm={6} item ><Post post={post}/></Grid>
+              <Grid key={post._id} xs={12} sm={6} item ><Post post={post} setCurrentId={setCurrentId} currentId={currentId}/></Grid>
               )
           }
       </Grid>

@@ -1,7 +1,7 @@
 import mongoose, { model } from 'mongoose'
 
 const postSchmea=mongoose.Schema({
-  tile:String,
+  title:String,
   message:String,
   creator:String,
   tags:[String],

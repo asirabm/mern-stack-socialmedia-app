@@ -7,22 +7,20 @@ import { StyleAppBar,StyleImage } from './components/posts/style'
 //import Testing from './components/Testing'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPosts } from './actions/Actions' 
+import { useState } from 'react'
 //import { useSelect } from '@mui/base'
 
 
 
 function App(){
+   const [currentId,setCurentId]=useState(null)
    const dispatch=useDispatch()
    const posts=useSelector(state=>state.postReducer)
+   
    useEffect(()=>{
-      
       dispatch(getAllPosts())
    
-   },[dispatch])
-
-
-
-   console.log(posts)
+   },[dispatch,currentId,posts])
 
    return(
         <>
@@ -38,10 +36,10 @@ function App(){
           <Container sx={{m:10}}>
           <Grid container justifyContent={'space-between'} alignItems={'center'} >
                  <Grid item xs={12} sm={7}>
-                    <Posts/>
+                    <Posts setCurrentId={setCurentId} currentId={currentId}/>
                  </Grid>
                  <Grid item xs={12} sm={5}>
-                    <FormPost/>
+                    <FormPost currentId={currentId} setCurrentId={setCurentId}/>
                  </Grid>
              </Grid>
 

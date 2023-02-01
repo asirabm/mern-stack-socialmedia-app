@@ -36,6 +36,7 @@ export const getAllPosts=()=>async(dispatch)=>{
 export const postPost=(post)=>async(dispatch)=>{
     try{
      const {data}= await api.postData(post)
+     console.log(data)
      dispatch({
         type:'create_post',
         payload:data
@@ -45,4 +46,46 @@ export const postPost=(post)=>async(dispatch)=>{
       console.log(e.message)
     }
 }
+export const updataPost=(post,currentId)=>async(dispatch)=>{
+    try{
+        //console.log(`From disapatch ${post} ,${currentId}`)
+       const {data}= await api.updatData(post, currentId)
+       console.log(data)
+      
+       dispatch({
+        type:'update_post',
+        payload:data
+       })
+    }
+    catch(e){
+    console.log(e.message)
+    }
+}
 
+export const deletePost=(id)=>async(dispatch)=>{
+  try{
+    await api.deletePost(id)
+    dispatch({
+        type:'delete_post',
+        payload:id
+    })
+  }
+  catch(e){
+    console.log(e.message)
+  }
+
+}
+
+
+export const LikeCountPost=(id)=>async(dispatch)=>{
+    try{
+       const {data}= await api.LikeCountPost(id)
+       dispatch({
+        type:'like_count',
+        payload:data
+       })
+    }
+    catch(e){
+      console.log(e.message)
+    }
+}

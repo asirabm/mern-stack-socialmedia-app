@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField,Button,Typography, Paper } from '@mui/material'
 import FileBase from 'react-file-base64'
 import { StylePaper,StyleForm,StyleFileInput } from './style'
-import {useDispatch} from 'react-redux'
-import { postPost } from '../../actions/Actions'
+import {useDispatch, useSelector} from 'react-redux'
+import { postPost,updataPost } from '../../actions/Actions'
 
-function FormPost() {
+function FormPost({currentId,setCurrentId}) {
   const dispatch=useDispatch()
+  const post=useSelector(state=>currentId ? state.postReducer.find(p=>p._id===currentId):null)
   const[postData,setPostData]=useState({
     creator:'',
     title:'',
@@ -15,21 +16,40 @@ function FormPost() {
     selectedFile:''
   })
 
+
+ useEffect(()=>{
+   if(post) setPostData(post)
+ },[post])
+
 const formhandle=(e)=>{
   e.preventDefault()
- dispatch(postPost(postData))
+ if(currentId){
+  console.log('From updatePost akcnask')
+  dispatch(updataPost(postData,currentId))
+ }
+ else{
+  dispatch(postPost(postData))
+ }
+ clear()
+
  
 }
 const clear=()=>{
-
+  setPostData({
+    creator:'',
+    title:'',
+    message:'',
+    tags:'',
+    selectedFile:''
+  })
+  setCurrentId(null)
 }
-
 
 
   return (
     <StylePaper>
       <StyleForm onSubmit={formhandle}>
-        <Typography>Creating a Memories</Typography>
+        <Typography>{ currentId ? 'Editing':'Creating'} a Memories</Typography>
         <TextField  name='creator' 
         variant='outlined' 
         label="creator"
